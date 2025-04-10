@@ -19,8 +19,11 @@ app.listen(5000, '0.0.0.0', () => {
 //routes
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
 
-app.listen(PORT, () => {
-    console.log(`Serveur lancé sur le port ${PORT}`);
-  });
+const server = () => {
+    db()
+    app.listen(PORT, () => {
+        console.log('listening to port:', PORT)
+    })
+}
 
 server()
